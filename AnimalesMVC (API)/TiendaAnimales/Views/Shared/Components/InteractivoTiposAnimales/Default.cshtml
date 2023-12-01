@@ -1,0 +1,40 @@
+﻿@model Dictionary<string, string>
+@*
+    ViewComponent
+*@
+
+<style>
+    .tipoAnimales {
+        border: solid 1px #aaa;
+        border-radius: 10px;
+        padding: 12px;
+    }
+
+        .tipoAnimales .animales {
+            display: inline-block;
+            float: left;
+            max-width: 200px;
+            font-size: 12px;
+        }
+
+    .clearer {
+        clear: both;
+    }
+</style>
+
+<h2>¡Estoy podría cargarse desde base de datos!</h2>
+
+<div class="tipoAnimales">
+    <p>Tipos de animal</p>
+    @foreach (var item in Model)
+    {
+        <div class="animales m-2">
+            <h4>@item.Key</h4>
+            <p>
+                @item.Value
+            </p>
+        </div>
+    }
+    
+    <div class="clearer"></div>
+</div>

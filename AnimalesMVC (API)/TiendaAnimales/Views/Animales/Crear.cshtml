@@ -1,0 +1,43 @@
+﻿@model Animal
+@{
+    ViewData["Title"] = "Crear";
+}
+
+<h1>Crear</h1>
+
+<form asp-action="crear" asp-controller="animales" method="post" asp-antiforgery="true">
+    <div asp-validation-summary="All" class="text-danger"></div>  
+
+    <div class="form-group mb-2">
+        <label asp-for="NombreAnimal"></label>
+        <input asp-for="NombreAnimal" class="form-control" />
+        <span asp-validation-for="NombreAnimal" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-2">
+        <label asp-for="Raza"></label>
+        <input asp-for="Raza" class="form-control" />
+        
+    </div>
+
+    <div class="form-group mb-2">
+        <label asp-for="RIdTipoAnimal"></label>
+        <select asp-for="RIdTipoAnimal" class="form-select" asp-items="@ViewBag.TiposAnimales"></select>
+        <span asp-validation-for="RIdTipoAnimal" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-2">
+        <label asp-for="FechaNacimiento"></label>
+        <input asp-for="FechaNacimiento" class="form-control" type="date" />
+        <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+@section Scripts
+{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
